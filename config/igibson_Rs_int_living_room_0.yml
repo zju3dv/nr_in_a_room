@@ -1,0 +1,13 @@
+---
+parent_config: config/ig_obj_common.yml
+
+dataset:
+  root_dir: data/Rs_int_living_room_0_view_50/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  # img_wh: [160, 120]
+  # rendering params
+  # 4: bottom_cabinet
+  # 46: bed
+  training_obj_ids: [23, 5, 10, 7, 8, 9, 16, 18, 19, 12, 13, 14, 15]
+  val_obj_ids: [7, 15]

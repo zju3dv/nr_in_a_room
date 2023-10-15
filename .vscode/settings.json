@@ -1,0 +1,32 @@
+{
+    "python.formatting.provider": "none",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/scans/**": true,
+        "**/.hg/store/**": true,
+        "**/__pycache__": true,
+        "**/logs": true,
+        "**/debug": true,
+        "**/saved": true,
+        "**/data": true,
+        "**/scans": true,
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/saved": true,
+        "**/data": true,
+        "**/scans": true,
+        "**/logs": true,
+        "**/debug": true,
+        // "**/eigen": true,
+        "**/build": true,
+        // "**/pybind11": true
+        "**/__pycache__": true
+    },
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+    },
+    "git.allowForcePush": true
+}

@@ -1,0 +1,62 @@
+---
+neus_conf: config/neus.yaml
+# model_type: NeRF_Object
+model_type: NeuS
+inside_out: True
+
+train:
+  limit_train_batches: 5000
+
+dataset:
+  # settings of multi lighting
+  cache_read: False
+  multi_lights: False
+  augment_light_map: True
+  hdr_gallary_diffuse_map_dir: data/hdr_galary_100_diffuse/
+  # N_diffuse_map_augment_offset: 3
+  N_diffuse_map_augment_offset: 1
+  diffuse_map_skip: 1
+  # diffuse_map_shrink_range: 0.75
+  diffuse_map_shrink_range: 1.0
+  # diffuse_map_shrink_range: 1.25
+  #-------------
+  dataset_name: igibson_background_single
+  # root_dir: data/Beechwood_0_int_lobby_0/
+  # scene_info_path: scene/00000/
+  with_door_window: True
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  # img_wh: [160, 120]
+  # rendering params
+  use_statistic_near_far: False
+  # use_statistic_near_far: True
+  # near: 0.1
+  near: 0.3
+  # far: 8.0
+  # far: 6.0
+  far: 10.0
+  # far: 4.0
+  scale_factor: 3.0
+
+  # frame selection via idx
+  # train_skip_step: 2
+  train_skip_step: 1
+  validate_idx: 28
+  # validate_idx: 56
+  validate_lights: [1, 8]
+  total_num_frames: 50
+
+  # remove black border caused by image undistortion
+  border_mask: 3
+
+loss:
+  color_loss_weight: 1.0
+  # depth_loss_weight: 0.0
+  depth_loss_weight: 1.0
+  # opacity_loss_weight: 1.0
+  opacity_loss_weight: 10.0
+  instance_color_loss_weight: 1.0
+  # instance_depth_loss_weight: 0.0
+  instance_depth_loss_weight: 1.0
+  # latent_loss_weight: 0.001
+  eikonal_loss_weight: 0.1

@@ -1,0 +1,48 @@
+---
+scene_name: Beechwood_1_int_bedroom_0_no_random
+dataset_config_path: config/igibson_Beechwood_1_int_bedroom_0_no_random.yml
+bg_dataset_config_path: config/igibson_Beechwood_1_int_bedroom_0_bg.yml
+# img_wh: [640, 360]
+img_wh: [320, 180]
+chunk: 8192 # 8 * 1024
+
+# testing output config
+output_path: debug/
+prefix: ""
+
+# all ckpts
+ckpt_lists:
+  # - path: logs/211031_145111_neus_ig_bedroom_0_bg_with_door_window/last.ckpt
+  #   obj_ids: [0] # 0 denotes background
+  # - path: logs/211031_024124_ig_bedroom_0_no_rand_obj_fullres/last.ckpt
+  #   obj_ids: [3, 4, 5, 6, 7, 8, 9, 10, 45, 48, 49, 50, 51, 62, 64, 94, 97, 104, 105]
+  - path: logs/ig_bedroom_bg_shrink_1.0/last.ckpt
+    obj_ids: [0] # 0 denotes background
+  - path: logs/ig_bedroom_objs_3_4_5_6/last.ckpt
+    obj_ids: [3, 4, 5, 6]
+  - path: logs/ig_bedroom_objs_7_8_9_10/last.ckpt
+    obj_ids: [7, 8, 9, 10]
+  - path: logs/ig_bedroom_objs_45_48_49_50/last.ckpt
+    obj_ids: [45, 49, 50]
+  - path: logs/ig_bedroom_objs_48/last.ckpt
+    obj_ids: [48]
+  - path: logs/ig_bedroom_objs_51_62_64/last.ckpt
+    obj_ids: [51, 62, 64]
+
+# rendering setting
+# active_instance_id: [0, 4, 48]
+active_instance_id: [0, 3, 4, 5, 6, 7, 8, 9, 10, 45, 48, 49, 50, 51, 62, 64]
+
+# testing setting
+# test_image_path: data/Beechwood_1_int_bedroom_0_no_random/scene/00021/rgb.png
+test_image_path: data/Beechwood_1_int_bedroom_0_no_random/scene_multi_lights/hoto_studio_london_hall_1k/00004/rgb.png
+
+# mainly for object info and camera pose
+# scene_info_json: data/Beechwood_1_int_bedroom_0_no_random/scene/00021/data.json
+# scene_info_json: data/Beechwood_1_int_bedroom_0_no_random/scene/full/data.json
+scene_info_json: data/Beechwood_1_int_bedroom_0_no_random/scene_multi_lights/hoto_studio_london_hall_1k/00004/data.json
+
+# seg_mask_path: data/Beechwood_1_int_bedroom_0_no_random/scene/00021/seg.png
+seg_mask_path: data/Beechwood_1_int_bedroom_0_no_random/scene_multi_lights/hoto_studio_london_hall_1k/00004/seg.png
+
+# obj_prediction_json: data/Beechwood_1_int_bedroom_0_no_random/scene/00021/prediction.json

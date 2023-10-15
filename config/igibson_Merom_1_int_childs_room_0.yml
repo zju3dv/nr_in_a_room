@@ -1,0 +1,14 @@
+---
+parent_config: config/ig_obj_common.yml
+
+dataset:
+  root_dir: data/Merom_1_int_childs_room_0/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+
+  # training_obj_ids: [3, 6, 7, 8, 9, 10, 11, 47, 48, 49, 50, 85, 88, 96, 98]
+  # remove door and windowj
+  training_obj_ids: [3, 6, 7, 8, 9, 10, 11, 47, 48, 49, 50]
+  # 6: bed, 9 chair
+  val_obj_ids: [6, 9]
+  

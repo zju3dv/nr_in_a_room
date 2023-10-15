@@ -1,0 +1,66 @@
+
+---
+scene_name: real_room_1
+dataset_config_path: config/real_room_1_objs.yml
+bg_dataset_config_path: config/real_room_1_bg.yml
+# img_wh: [640, 360]
+img_wh: [320, 180]
+# chunk: 8192 # 8 * 1024
+# chunk: 20000 # 8 * 1024
+chunk: 80000
+
+# testing output config
+output_path: debug/
+prefix: ""
+
+optimize_appearance_code: True
+
+# all ckpts
+ckpt_lists:
+  # - path: logs/211103_010401_real_home_0_bg_fullres/last.ckpt
+  # - path: logs/04_real_room_0/211106_133034_real_room_0_bg_hloc_converge_normal_smallres/last.ckpt
+  - path: logs/real_room_1_bg_PE_3_0_with_light_aug/last.ckpt
+    obj_ids: [0] # 0 denotes background
+    # neus_conf: config/neus_no_radiance_pe.yaml
+    neus_conf: config/neus_pe_3_0.yaml
+    # neus_conf: config/neus.yaml
+  - path: logs/real_room_0_objs_31_PE_10_0_good_mask_fix_align/last.ckpt
+    obj_ids: [31]
+    neus_conf: config/neus_real_room_view_ind.yaml
+  - path: logs/real_room_0_objs_32_PE_10_0_good_mask/last.ckpt
+    obj_ids: [32]
+    neus_conf: config/neus_real_room_view_ind.yaml
+  - path: logs/real_room_0_objs_33_PE_10_0_good_mask/last.ckpt
+    obj_ids: [33]
+    neus_conf: config/neus_real_room_view_ind.yaml
+  - path: logs/real_room_0_objs_34_PE_10_0_good_mask_filt_50_resume/last.ckpt
+    obj_ids: [34]
+    neus_conf: config/neus_real_room_view_ind.yaml
+  - path: logs/real_room_0_objs_35_PE_10_0_good_mask_resume/last.ckpt
+    obj_ids: [35]
+    neus_conf: config/neus_real_room_view_ind.yaml
+  - path: logs/real_room_1_objs_37_PE_10_0_erode_5/last.ckpt
+    obj_ids: [37]
+    neus_conf: config/neus_real_room_view_ind.yaml
+
+# rendering setting
+# 1: box, 2: shelf, 3: chair, 4: desk, 5: nightstand, 6: stool
+# active_instance_id: [0, 31, 32, 33, 34, 35, 37]
+# active_instance_id: [0, 33, 35, 37]
+active_instance_id: [0, 33, 35, 37]
+# active_instance_id: [0]
+# active_instance_id: [0, 35]
+# active_instance_id: [0]
+
+# testing setting
+# test_image_path: data/real_room_0/scene/00000/rgb.png
+# test_image_path: data/real_room_0/arrangement_panorama_select/arrangement1/000034.png
+# test_image_path: data/real_room_0/arrangement_panorama_select/arrangement1/000144.png
+test_image_path: data/real_room_0/arrangement_panorama_select/arrangement3/000017.png
+# test_image_path: data/real_room_0/arrangement_panorama_select/arrangement1/000164.png
+# mainly for object info and camera pose
+scene_info_json: data/real_room_1/scene/full/data.json
+
+# seg_mask_path: data/real_room_0/scene/full/seg.png
+
+obj_prediction_json: data/object_prediction/1113_realdata/arr3_wb_deeppano/000017/pred.json

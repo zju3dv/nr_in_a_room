@@ -1,0 +1,79 @@
+
+---
+neus_conf: config/neus.yaml
+# model_type: NeRF_Object
+model_type: NeuS
+
+train:
+  limit_train_batches: 5000
+
+dataset:
+  # settings of multi lighting
+  cache_read: False
+  multi_lights: False
+  augment_light_map: True
+  hdr_gallary_diffuse_map_dir: data/hdr_galary_100_diffuse/
+  # N_diffuse_map_augment_offset: 3
+  N_diffuse_map_augment_offset: 1
+  diffuse_map_skip: 2
+  # diffuse_map_shrink_range: 0.75
+  diffuse_map_shrink_range: 1.0
+  # diffuse_map_shrink_range: 1.25
+  #-------------
+  dataset_name: igibson_object_single
+  # root_dir: data/Beechwood_0_int_lobby_0/
+  scene_info_path: scene/full/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  # rendering params
+  use_statistic_near_far: False
+  # use_statistic_near_far: True
+  near: 0.1
+  # near: 1.0
+  # far: 8.0
+  far: 6.0
+  # far: 4.0
+  # scale_factor: 3.0
+  # scale_factor: 2.0
+  scale_factor: 1.0
+  # when using bbox, this would be overwrited by bbox center
+  scene_center: [0, 0, 0]
+
+  # frame selection via idx
+  # train_skip_step: 2
+  train_skip_step: 1
+  validate_idx: 28
+  # validate_idx: 56
+  validate_lights: [1, 8]
+
+  split: datasets/split/igibson_Beechwood_1_int_beedroom_0_view_50/
+
+  use_instance_mask: True
+  inst_seg_tag: 'seg'
+
+  # training_obj_ids: [4, 5, 28, 29, 30, 31, 32, 33, 34, 35, 95, 96, 100, 103, 104, 107, 108, 110, 111]
+  # # 4 piano, 31 large desk
+  # val_obj_ids: [4, 31]
+  
+  # rebalance instance mask, since background is usually larger than foreground
+  object_sampling_ratio: 0.7
+  # object_sampling_ratio: 0
+  mask_fg_weight: 1.0
+  mask_bg_weight: 1.0
+  # mask_bg_weight: 0.2
+  # mask_bg_weight: 0.05
+
+  # remove black border caused by image undistortion
+  border_mask: 3
+
+loss:
+  color_loss_weight: 1.0
+  # depth_loss_weight: 0.0
+  depth_loss_weight: 1.0
+  # opacity_loss_weight: 1.0
+  opacity_loss_weight: 10.0
+  instance_color_loss_weight: 1.0
+  # instance_depth_loss_weight: 0.0
+  instance_depth_loss_weight: 1.0
+  # latent_loss_weight: 0.001
+  eikonal_loss_weight: 0.1

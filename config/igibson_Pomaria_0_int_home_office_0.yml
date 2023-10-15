@@ -1,0 +1,15 @@
+---
+parent_config: config/ig_obj_common.yml
+
+dataset:
+  root_dir: data/Pomaria_0_int_home_office_0/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  # img_wh: [160, 120]
+
+  # training_obj_ids: [6, 7, 8, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 50]
+  # remove door and window
+  training_obj_ids: [6, 7, 8, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+  # 8: chair, 23: small_desk
+  val_obj_ids: [8, 23]
+  

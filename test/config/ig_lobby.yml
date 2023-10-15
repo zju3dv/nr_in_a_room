@@ -1,0 +1,41 @@
+---
+scene_name: Beechwood_0_int_lobby_0
+dataset_config_path: config/igibson_Beechwood_0_int_lobby_0.yml
+bg_dataset_config_path: config/igibson_Beechwood_0_int_lobby_0_bg.yml
+# img_wh: [640, 360]
+img_wh: [320, 180]
+chunk: 8192 # 8 * 1024
+
+# testing output config
+output_path: debug/
+prefix: ""
+
+# all ckpts
+ckpt_lists:
+  - path: logs/ig_lobby_bg_shrink_1.0_scale_5.0/last.ckpt
+    obj_ids: [0] # 0 denotes background
+  # - path: logs/01_ig_lobby/211101_022935_ig_lobby_objs_fullres/last.ckpt
+  #   obj_ids: [4, 5, 28, 29, 30, 31, 32, 33, 34, 35, 95, 96]
+  - path: logs/ig_lobby_objs_4_5_28_29/last.ckpt
+    obj_ids: [4, 5, 28, 29]
+  - path: logs/ig_lobby_objs_30_31_32_33_resume/last.ckpt
+    obj_ids: [30, 31, 32, 33]
+  - path: logs/ig_lobby_objs_34_35_95_96_resume/last.ckpt
+    obj_ids: [34, 35, 95, 96]
+
+# rendering setting
+# 4 piano, 31 large desk
+# active_instance_id: [0, 4, 31]
+active_instance_id: [0, 4, 5, 28, 29, 30, 31, 32, 33, 34, 35, 95, 96]
+
+# testing setting
+# test_image_path: data/Beechwood_0_int_lobby_0/scene/00000/rgb.png
+test_image_path: data/Beechwood_0_int_lobby_0/scene_multi_lights/phone_shop_1k/00005/rgb.png
+# mainly for object info and camera pose
+# scene_info_json: data/Beechwood_0_int_lobby_0/scene/00000/data.json
+scene_info_json: data/Beechwood_0_int_lobby_0/scene_multi_lights/phone_shop_1k/00005/data.json
+
+# seg_mask_path: data/Beechwood_0_int_lobby_0/scene/00000/seg.png
+seg_mask_path: data/Beechwood_0_int_lobby_0/scene_multi_lights/phone_shop_1k/00005/seg.png
+
+# obj_prediction_json: data/Beechwood_0_int_lobby_0/scene/00021/prediction.json

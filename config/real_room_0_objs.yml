@@ -1,0 +1,128 @@
+---
+# neus_conf: config/neus.yaml
+# neus_conf: config/neus_real_room.yaml
+neus_conf: config/neus_real_room_view_ind.yaml
+# model_type: NeRF_Object
+model_type: NeuS
+
+train:
+  limit_train_batches: 5000
+  # limit_train_batches: 8000
+
+model:
+  N_max_appearance_frames: 10000
+  N_appearance_embedding: 16
+
+dataset:
+  # settings of multi lighting
+  cache_read: False
+  multi_lights: False
+  augment_light_map: True
+  hdr_gallary_diffuse_map_dir: data/hdr_galary_100_diffuse/
+  # N_diffuse_map_augment_offset: 3
+  N_diffuse_map_augment_offset: 1
+  diffuse_map_skip: 2
+  # diffuse_map_shrink_range: 0.5
+  diffuse_map_shrink_range: 0.75
+  #-------------
+  dataset_name: igibson_object_single
+  root_dir: data/real_room_0/
+  scene_info_path: scene/full/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  # img_wh: [160, 120]
+  # rendering params
+  use_statistic_near_far: False
+  # use_statistic_near_far: True
+  near: 0.01
+  # near: 1.0
+  # far: 6.0
+  far: 4.0
+  # far: 4.0
+  # scale_factor: 3.0
+  # scale_factor: 2.0
+  scale_factor: 1.0
+  # scale_factor: 0.3
+  # when using bbox, this would be overwrited by bbox center
+  scene_center: [0, 0, 0]
+
+  # frame selection via idx
+  # train_skip_step: 2
+  train_skip_step: 1
+  validate_idx: 0 # sometimes other idx not exist
+  # validate_idx: 56
+  validate_lights: [1, 8]
+
+  split: datasets/split/igibson_Beechwood_1_int_beedroom_0_view_50/
+  train_split_from_all: True # train indices from all images except for testing
+
+  use_instance_mask: True
+  # inst_seg_tag: 'instance'
+  inst_seg_tag: 'seg'
+
+  # 1: box, 2: shelf, 3: chair, 4: desk, 5: nightstand, 6: stool
+  # training_obj_ids: [1, 2]
+  # training_obj_ids: [3, 4]
+  # training_obj_ids: [5, 6]
+  # training_obj_ids: [1]
+  # training_obj_ids: [2]
+  # training_obj_ids: [3]
+  # training_obj_ids: [24]
+  training_obj_ids: [34]
+  # val_obj_ids: [1, 2]
+  # val_obj_ids: [3, 4]
+  # val_obj_ids: [5, 6]
+  # val_obj_ids: [1]
+  # val_obj_ids: [2]
+  # val_obj_ids: [3]
+  # val_obj_ids: [24]
+  val_obj_ids: [34]
+
+  scale_factor_dict:
+    "1": 0.2
+    "2": 1.0
+    "3": 0.5
+    "4": 1.0
+    "5": 0.5
+    "6": 0.2
+    # "104": 1.0
+    # "24": 1.5
+    # "24": 1.0
+    "31": 0.2
+    "32": 1.0
+    "33": 0.5
+    # "34": 1.0
+    "34": 0.75
+    "35": 0.5
+    "51": 0.2
+    "52": 1.0
+    "53": 0.5
+    "54": 0.75
+    "55": 0.5
+  
+  # rebalance instance mask, since background is usually larger than foreground
+  object_sampling_ratio: 0.7
+  # object_sampling_ratio: 0
+  # soften_mask_border: True
+  # # soften_mask_pixel: 15
+  # soften_mask_pixel: 10
+  mask_erode: 5
+  mask_fg_weight: 1.0
+  mask_bg_weight: 1.0
+  # mask_bg_weight: 0.2
+  # mask_bg_weight: 0.05
+
+  # remove black border caused by image undistortion
+  border_mask: 3
+
+loss:
+  color_loss_weight: 1.0
+  # depth_loss_weight: 0.0
+  depth_loss_weight: 1.0
+  # opacity_loss_weight: 1.0
+  opacity_loss_weight: 10.0
+  instance_color_loss_weight: 1.0
+  # instance_depth_loss_weight: 0.0
+  instance_depth_loss_weight: 1.0
+  # latent_loss_weight: 0.001
+  eikonal_loss_weight: 0.1

@@ -1,0 +1,11 @@
+{
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/logs",
+    "**/debug",
+    "**/data",
+    "**/gen_output",
+    "**/scans",
+  ],
+}

@@ -1,0 +1,15 @@
+---
+parent_config: config/ig_obj_common.yml
+
+dataset:
+  root_dir: data/Beechwood_0_int_lobby_0/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  # img_wh: [160, 120]
+
+  # training_obj_ids: [4, 5, 28, 29, 30, 31, 32, 33, 34, 35, 95, 96, 100, 103, 104, 107, 108, 110, 111]
+  # remove door and window
+  training_obj_ids: [4, 5, 28, 29, 30, 31, 32, 33, 34, 35, 95, 96]
+  # 4 piano, 31 large desk
+  val_obj_ids: [4, 31]
+  

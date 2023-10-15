@@ -1,0 +1,10 @@
+---
+parent_config: config/ig_bg_common.yml
+
+dataset:
+  root_dir: data/Beechwood_0_int_lobby_0/
+  scene_info_path: scene/00000/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  scene_center: [-7.0, -3.0, 1.3]
+  scale_factor: 5.0

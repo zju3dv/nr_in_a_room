@@ -1,0 +1,93 @@
+
+---
+# neus_conf: config/neus.yaml
+# neus_conf: config/neus_real_room.yaml
+# neus_conf: config/neus_real_room_view_ind.yaml
+# neus_conf: config/neus_no_radiance_pe.yaml
+# neus_conf: config/neus_PE_6_0.yaml
+neus_conf: config/neus_PE_3_0.yaml
+# neus_conf: config/neus_PE_1_0.yaml
+# model_type: NeRF_Object
+model_type: NeuS
+inside_out: True
+
+train:
+  limit_train_batches: 5000
+  # limit_train_batches: 10000
+  # limit_train_batches: 8000
+  batch_size: 1024
+
+model:
+  N_max_appearance_frames: 10000
+  N_appearance_embedding: 16
+
+dataset:
+  # settings of multi lighting
+  cache_read: False
+  multi_lights: False
+  augment_light_map: True
+  # augment_light_map: False
+  hdr_gallary_diffuse_map_dir: data/hdr_galary_100_diffuse/
+  # N_diffuse_map_augment_offset: 3
+  N_diffuse_map_augment_offset: 1
+  diffuse_map_skip: 2
+  diffuse_map_shrink_range: 0.75
+  # diffuse_map_shrink_range: 1.0
+  #-------------
+  dataset_name: igibson_object_single
+  root_dir: data/real_room_1/
+  scene_info_path: scene/full/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  # img_wh: [160, 120]
+  # rendering params
+  # use_statistic_near_far: False
+  use_statistic_near_far: False
+  near: 0.1
+  # near: 1.0
+  far: 6.0
+  # far: 4.0
+  scale_factor: 2.0
+  scene_center: [0, 0, 0]
+
+  # frame selection via idx
+  # train_skip_step: 2
+  train_skip_step: 1
+  # validate_idx: 121
+  validate_idx: 3
+  # validate_idx: 56
+  validate_lights: [1, 8]
+
+  split: datasets/split/igibson_Beechwood_1_int_beedroom_0_view_50/
+  train_split_from_all: True # train indices from all images except for testing
+
+  use_instance_mask: False
+  # inst_seg_tag: 'instance'
+  # inst_seg_tag: 'seg'
+
+  # 0: background
+  training_obj_ids: [0]
+  val_obj_ids: [0]
+  
+  # rebalance instance mask, since background is usually larger than foreground
+  # object_sampling_ratio: 0.7
+  object_sampling_ratio: 0
+  # mask_fg_weight: 1.0
+  # mask_bg_weight: 1.0
+  # mask_bg_weight: 0.2
+  # mask_bg_weight: 0.05
+
+  # remove black border caused by image undistortion
+  border_mask: 3
+
+loss:
+  color_loss_weight: 1.0
+  # depth_loss_weight: 0.0
+  depth_loss_weight: 1.0
+  # opacity_loss_weight: 1.0
+  opacity_loss_weight: 10.0
+  instance_color_loss_weight: 1.0
+  # instance_depth_loss_weight: 0.0
+  instance_depth_loss_weight: 1.0
+  # latent_loss_weight: 0.001
+  eikonal_loss_weight: 0.1

@@ -1,0 +1,44 @@
+---
+scene_name: Merom_1_int_childs_room_0
+dataset_config_path: config/igibson_Merom_1_int_childs_room_0.yml
+bg_dataset_config_path: config/igibson_Merom_1_int_childs_room_0_bg.yml
+# img_wh: [640, 360]
+img_wh: [320, 180]
+chunk: 8192 # 8 * 1024
+
+# testing output config
+output_path: debug/
+prefix: ""
+
+# all ckpts
+ckpt_lists:
+  - path: logs/ig_childs_room_bg_with_door_window/last.ckpt
+    obj_ids: [0] # 0 denotes background
+  # - path: logs/02_ig_childs_room/211101_155545_ig_childs_room_objs_fullres/last.ckpt
+  #   obj_ids: [3, 6, 7, 8, 9, 10, 11, 47, 48, 49, 50]
+  - path: logs/ig_childs_room_objs_3_6_7_8/last.ckpt
+    obj_ids: [3, 6, 7, 8]
+  - path: logs/ig_childs_room_objs_9_10_11_47/last.ckpt
+    obj_ids: [9, 10, 11, 47]
+  - path: logs/ig_childs_room_objs_48_49_50/last.ckpt
+    obj_ids: [48, 49, 50]
+
+# rendering setting
+# 6: bed, 9 chair
+# active_instance_id: [0, 6, 9]
+active_instance_id: [0, 3, 6, 7, 8, 9, 10, 11, 47, 48, 49, 50]
+
+# testing setting
+# test_image_path: data/Merom_1_int_childs_room_0/scene/00000/rgb.png
+# test_image_path: data/Merom_1_int_childs_room_0/scene_multi_lights/ballroom_1k/00001/rgb.png
+test_image_path: data/Merom_1_int_childs_room_0/scene_multi_lights/probe_03/00001/rgb.png
+# mainly for object info and camera pose
+# scene_info_json: data/Merom_1_int_childs_room_0/scene/00000/data.json
+# scene_info_json: data/Merom_1_int_childs_room_0/scene_multi_lights/ballroom_1k/00001/data.json
+scene_info_json: data/Merom_1_int_childs_room_0/scene_multi_lights/probe_03/00001/data.json
+
+# seg_mask_path: data/Merom_1_int_childs_room_0/scene/00000/seg.png
+# seg_mask_path: data/Merom_2_int_childs_room_0/scene_multi_lights/ballroom_1k/00001/seg.png
+seg_mask_path: data/Merom_2_int_childs_room_0/scene_multi_lights/probe_03/00001/seg.png
+
+# obj_prediction_json: data/Merom_1_int_childs_room_0/scene/00021/prediction.json

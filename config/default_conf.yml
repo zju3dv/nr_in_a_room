@@ -1,0 +1,94 @@
+---
+
+exp_name: exp
+ckpt_path: null
+
+loss:
+  opacity_loss_weight: 100.0
+
+# dataset:
+#   # root directory of dataset
+#   root_dir: "/home/ubuntu/data/nerf_example_data/nerf_synthetic/lego"
+#   dataset_name: blender
+#   # resolution (img_w, img_h) of the image
+#   img_wh:
+#   - 800
+#   - 800
+#   # whether images are taken in spheric poses (for llff)
+#   spheric_poses: false
+
+train:
+  # self-pruning and subdivision for voxel features
+  progressive_train: false
+
+  # training batch size (num of rays)
+  # batch_size: 512
+  batch_size: 768
+  # batch_size: 1024
+  # batch_size: 2048
+  # chunk size to split the input to avoid OOM
+  chunk: 32768
+  # number of training epochs
+  num_epochs: 30
+  # number of gpus
+  num_gpus: 1
+  # the prefixes to ignore in the checkpoint state dict
+  prefixes_to_ignore: ['loss']
+  optimizer: adam
+  lr: 0.0005
+  momentum: 0.9
+  weight_decay: 0
+
+  # limit_train_batches: 0.15
+  # limit_train_batches: 0.25
+  # limit_train_batches: 10000
+  limit_train_batches: 5000
+  # limit_train_batches: 0.5
+
+  # for poly lr scheduler
+  lr_scheduler: poly
+  poly_exp: 2
+  # # for steplr lr scheduler
+  # lr_scheduler: steplr
+  # # scheduler decay step
+  # decay_step: [20]
+  # # learning rate decay amount
+  # decay_gamma: 0.1
+  # lr is multiplied by this factor after --warmup_epochs
+  warmup_multiplier: 1
+  # Gradually warm-up(increasing) learning rate in optimizer
+  warmup_epochs: 0
+
+model:
+  # NeRF specifics
+  # number of coarse samples
+  N_samples: 64
+  # number of additional fine samples
+  N_importance: 128
+  # max number of objects
+  N_max_objs: 128
+  # object code embedding
+  # N_obj_embedding: 128
+  N_obj_embedding: 64
+  # N_obj_embedding: 32
+  # N_obj_embedding: 16
+  # N_max_lights: 128
+  N_max_lights: 1024
+  N_light_embedding: 16
+  # N_light_embedding: 32
+  # use disparity depth sampling
+  use_disp: false
+  # use_disp: true
+  # factor to perturb depth sampling points
+  perturb: 1
+  # std dev of noise added to regularize sigma
+  noise_std: 1
+  # use mask for ScanNet training, which also includes the border mask
+  use_mask: true
+  frustum_bound: 0.05
+  # number of vocabulary (number of images) in the dataset for nn.Embedding
+  N_vocab: 1000
+  # number of embeddings for appearance
+  # N_a: 0
+  # pcd_channels: 24
+  # pcd_N_freqs: 6

@@ -1,0 +1,42 @@
+---
+scene_name: Pomaria_0_int_home_office_0
+dataset_config_path: config/igibson_Pomaria_0_int_home_office_0.yml
+bg_dataset_config_path: config/igibson_Pomaria_0_int_home_office_0_bg.yml
+# img_wh: [640, 360]
+img_wh: [320, 180]
+chunk: 8192 # 8 * 1024
+
+# testing output config
+output_path: debug/
+prefix: ""
+
+# all ckpts
+ckpt_lists:
+  - path: logs/ig_home_office_bg_shrink_1.0/last.ckpt
+    obj_ids: [0] # 0 denotes background
+  # - path: logs/03_ig_home_office/211031_190131_ig_home_office_objs_fullres/last.ckpt
+  #   obj_ids: [6, 7, 8, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+  - path: logs/ig_home_office_6_7_8_22/last.ckpt
+    obj_ids: [6, 8, 22]
+  - path: logs/ig_home_office_23_24_25_26/last.ckpt
+    obj_ids: [23, 24, 25, 26]
+  - path: logs/ig_home_office_27_28_29_30_31/last.ckpt
+    obj_ids: [27, 31]
+  - path: logs/ig_home_office_7_28_retrain/last.ckpt
+    obj_ids: [7, 28]
+  - path: logs/ig_home_office_29_30_retrain/last.ckpt
+    obj_ids: [29, 30]
+
+# rendering setting
+# 8: chair, 23: small_desk
+# active_instance_id: [0, 6, 7, 8, 23]
+active_instance_id: [0, 6, 7, 8, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+
+# testing setting
+test_image_path: data/Pomaria_0_int_home_office_0/scene/00000/rgb.png
+# mainly for object info and camera pose
+scene_info_json: data/Pomaria_0_int_home_office_0/scene/full/data.json
+
+seg_mask_path: data/Pomaria_0_int_home_office_0/scene/00000/seg.png
+
+# obj_prediction_json: data/Pomaria_0_int_home_office_0/scene/00021/prediction.json

@@ -1,0 +1,9 @@
+---
+parent_config: config/ig_bg_common.yml
+
+dataset:
+  root_dir: data/Beechwood_1_int_bedroom_0_no_random/
+  scene_info_path: scene/00000/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+  scene_center: [-4.7, -4.5, 1.3]

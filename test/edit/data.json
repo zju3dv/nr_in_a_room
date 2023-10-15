@@ -1,0 +1,102 @@
+{
+    "name": "full",
+    "scene": "real",
+    "room": "room_0",
+    "fix_rot_X": -90.0,
+    "fix_rot_Y": 55.0,
+    "camera": {
+        "cam3d2world": [
+            [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+            ],
+            [
+                0.0,
+                -1.0,
+                0.0,
+                0.0
+            ],
+            [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        ]
+    },
+    "objs": [
+        {
+            "id": 0,
+            "classname": "background",
+            "model_path": "background_hloc_neus_normal_converge"
+        },
+        {
+            "id": 31,
+            "classname": "box",
+            "model_path": "box",
+            "bdb3d": {
+                "size": [
+                    0.2581183149040447,
+                    0.1788527205141489,
+                    0.3394069969654083
+                ]
+            }
+        },
+        {
+            "id": 32,
+            "classname": "shelf",
+            "model_path": "shelf",
+            "bdb3d": {
+                "size": [
+                    0.8229171407244669,
+                    0.3972950139494479,
+                    1.6171960234642029
+                ]
+            }
+        },
+        {
+            "id": 33,
+            "classname": "chair",
+            "model_path": "chair",
+            "bdb3d": {
+                "size": [
+                    0.46878485192795705,
+                    0.5415990214468354,
+                    0.8056670129299164
+                ]
+            }
+        },
+        {
+            "id": 34,
+            "classname": "desk",
+            "model_path": "desk",
+            "bdb3d": {
+                "size": [
+                    1.3148679176099063,
+                    0.6506551502713971,
+                    0.49406901001930237
+                ]
+            }
+        },
+        {
+            "id": 35,
+            "classname": "nightstand",
+            "model_path": "nightstand",
+            "bdb3d": {
+                "size": [
+                    0.4629683481536104,
+                    0.4249361667101929,
+                    0.5616100132465363
+                ]
+            }
+        }
+    ]
+}

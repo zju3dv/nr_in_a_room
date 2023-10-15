@@ -1,0 +1,15 @@
+---
+parent_config: config/ig_obj_common.yml
+
+dataset:
+  root_dir: data/Beechwood_1_int_bedroom_0_no_random/
+  img_wh: [640, 480]
+  # img_wh: [320, 240]
+
+  # training_obj_ids: [3, 4, 5, 6, 7, 8, 9, 10, 45, 48, 49, 50, 51, 62, 64, 94, 97, 104, 105]
+  # remove door and window
+  training_obj_ids: [3, 4, 5, 6, 7, 8, 9, 10, 45, 48, 49, 50, 51, 62, 64]
+  val_obj_ids: [4, 48]
+  
+  # scale_factor_dict:
+  #   "4": 0.2

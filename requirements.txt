@@ -1,0 +1,20 @@
+# torch==1.8.1
+pytorch-lightning==1.2.9
+einops==0.3.2
+test-tube==0.7.5
+kornia==0.5.10
+opencv-python
+jupyter
+trimesh
+plyfile
+# open3d==0.12.0
+open3d==0.13.0
+numba==0.54.0
+omegaconf==2.1.1
+tensorboard
+ipdb
+# data generation
+# igibson
+
+PyMCubes==0.1.2
+pyrender==0.1.45
